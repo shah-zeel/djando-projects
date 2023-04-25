@@ -1,6 +1,7 @@
 from django.urls import path
-from . import views     # '.' bez they are in the same file structure
+from .views import TaskList, TaskDetail     # '.' bez they are in the same file structure
 
 urlpatterns = [
-    path('', views.taskList, name='tasks'),
+    path('', TaskList.as_view(), name='tasks'),
+    path('task/<int:pk>/', TaskDetail.as_view(), name='task'),
 ]
