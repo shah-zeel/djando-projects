@@ -9,11 +9,18 @@
     </tr>
     {% for task in tasks %}
     <tr>
-        <td>{{task.title}}</td>
+        <!-- Strike COmpleted Tasks-->>
+        {% if task.complete %}
+            <td><strike>{{ task.title }}</strike></td>
+        {% else %}
+            <td>{{ task.title }}</td>
+        {% endif %}
+
+        <!-- Links to View, Edit and Delete -->
         <td><a href="{% url 'task' task.id %}">View</a></td>
         <td><a href="{% url 'task-update' task.id %}">Edit</a></td>
         <td><a href="{% url 'task-delete' task.id %}">Delete</a></td>
-    </tr>    
+    </tr>
     {% empty %}
         <h3>No items in list</h3>
     {% endfor %}
